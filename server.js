@@ -4,6 +4,10 @@ const ipoRoutes = require('./routes/ipo.js');
 require('dotenv').config();
 const app = express();
 
+const cors = require('cors');
+
+app.use(cors());  // Enable CORS
+
 // MongoDB connection
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URL)

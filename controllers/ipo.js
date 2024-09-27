@@ -45,7 +45,7 @@ exports.fetchAndStoreIpoData = async (req, res) => {
     );
 
     res.status(200).send({
-       data:ipos,
+       data:ipoData,
          message:'IPO data saved successfully'
       });
    
