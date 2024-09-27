@@ -3,15 +3,16 @@ const Ipo = require('../models/ipo');
 
 // Set up the headers to mimic a browser request and avoid being blocked
 const axiosInstance = axios.create({
-  baseURL: 'https://www.nseindia.com',
-  headers: {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Connection': 'keep-alive',
-    'Referer': 'https://www.nseindia.com',
-  }
-});
+    baseURL: 'https://www.nseindia.com',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+      'Accept': 'application/json, text/plain, */*',
+      'Referer': 'https://www.nseindia.com',
+      'Connection': 'keep-alive',
+    },
+    timeout: 60000  // Set the timeout to 60 seconds (60000 milliseconds)
+  });
+  
 
 exports.fetchAndStoreIpoData = async (req, res) => {
   try {
