@@ -19,7 +19,7 @@ exports.fetchAndStoreIpoData = async (req, res) => {
     const response = await axiosInstance.get('/api/ipo-current-issue');
     const ipoData = response.data;
 
-    await Promise.all(
+  const ipos =   await Promise.all(
       ipoData.map(async (ipo) => {
         const existingIpo = await Ipo.findOne({ symbol: ipo.symbol });
         if (!existingIpo) {
@@ -44,7 +44,11 @@ exports.fetchAndStoreIpoData = async (req, res) => {
       })
     );
 
-    res.status(200).send('IPO data fetched and stored in the database.');
+    res.status(200).send({
+       data:ipos,
+         message:'IPO data saved successfully'
+      });
+   
 
   } catch (error) {
     console.error('Error fetching or saving data:', error);
